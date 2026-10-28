@@ -1,0 +1,80 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "full_name": {
+      "type": "string",
+      "description": "Client full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Client email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Client phone number"
+    },
+    "service_category": {
+      "type": "string",
+      "description": "Hair, Barbering or Beauty"
+    },
+    "service": {
+      "type": "string",
+      "description": "Specific service requested"
+    },
+    "preferred_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Requested appointment date"
+    },
+    "preferred_time": {
+      "type": "string",
+      "description": "Requested appointment time"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Anything the client wants the stylist to know"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "Confirmed",
+        "Completed",
+        "Cancelled"
+      ],
+      "default": "Pending"
+    },
+    "admin_notes": {
+      "type": "string",
+      "description": "Internal notes for salon staff"
+    }
+  },
+  "required": [
+    "full_name",
+    "email",
+    "phone",
+    "service_category",
+    "service",
+    "preferred_date",
+    "preferred_time"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

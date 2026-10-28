@@ -1,0 +1,63 @@
+{
+  "name": "Lead",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Enquirer name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Enquirer email address"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Enquirer phone number"
+    },
+    "service_interest": {
+      "type": "string",
+      "description": "Service the enquirer is interested in"
+    },
+    "message": {
+      "type": "string",
+      "description": "The enquiry message"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "New",
+        "Contacted",
+        "Booked",
+        "Closed"
+      ],
+      "default": "New"
+    },
+    "admin_notes": {
+      "type": "string",
+      "description": "Internal notes for salon staff"
+    }
+  },
+  "required": [
+    "name",
+    "email",
+    "message"
+  ],
+  "rls": {
+    "create": {},
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
